@@ -1,0 +1,30 @@
+{
+    "name": "anh/content-block-bundle",
+    "type": "symfony-bundle",
+    "description": "Content block bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrew Hilobok",
+            "email": "hilobok@gmail.com"
+        }
+    ],
+
+    "require": {
+    },
+
+    "minimum-stability": "stable",
+
+    "autoload": {
+        "psr-4": {
+            "Anh\\ContentBlockBundle": ""
+        }
+    },
+
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
+
