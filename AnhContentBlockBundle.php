@@ -14,6 +14,7 @@ class AnhContentBlockBundle extends Bundle
     {
         return array(
             'Anh\DoctrineResourceBundle\AnhDoctrineResourceBundle',
+            'Sp\BowerBundle\SpBowerBundle',
         );
     }
 }
