@@ -11,6 +11,8 @@
     ],
 
     "require": {
+        "anh/doctrine-resource-bundle": "0.1.*",
+        "sp/bower-bundle": "~0.9"
     },
 
     "minimum-stability": "stable",

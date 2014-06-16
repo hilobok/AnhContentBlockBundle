@@ -1,0 +1,14 @@
+{% extends 'AnhAdminBundle::base.html.twig' %}
+
+{% block body %}
+    <h1>
+        AnhContentBlockBundle
+        <a href="{{ url('anh_admin') }}"><i class="fa fa-level-up"></i></a>
+    </h1>
+
+    <a href="{{ url('anh_content_block_admin_block_list') }}">Blocks</a>
+    &middot;
+    <a href="{{ url('anh_content_block_admin_group_list') }}">Groups</a>
+
+    {% block content '' %}
+{% endblock %}

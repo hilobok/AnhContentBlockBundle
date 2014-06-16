@@ -1,0 +1,7 @@
+{
+    "name": "AnhContentBlockBundle",
+    "private": true,
+    "dependencies": {
+        "codemirror": "~4.2.0"
+    }
+}

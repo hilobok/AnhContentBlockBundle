@@ -1,0 +1,73 @@
+{% extends "AnhContentBlockBundle:Admin:layout.html.twig" %}
+
+{% block title 'Content blocks' %}
+
+{% block content %}
+    <h2>{{ resources|length }} blocks</h2>
+
+    <form action="{{ url('anh_content_block_admin_block_delete') }}" method="post" id="fBlocks">
+        <div class="button_row">
+            <a href="{{ url('anh_content_block_admin_block_create') }}">Create new</a>
+
+            {% if resources %}
+                <button class="danger" type="submit">Delete</button>
+            {% endif %}
+        </div>
+
+        {% if resources %}
+            {% for block in resources %}
+                <div class="list_row">
+                    <div class="list_row_flags">
+                        <input type="checkbox" name="id[]" value="{{ block.id }}" />
+
+                        {% if block.isDraft %}
+                            <i class="fa fa-pencil is-draft"></i>
+                        {% endif %}
+                    </div>
+
+                    <div class="list_row_content">
+                        <a href="{{ url('anh_content_block_admin_block_update', { 'id': block.id }) }}">{{ block.title }}</a>
+                        &middot; {{ block.visibility }}
+                        &middot; {{ block.group.title }}
+
+                        <div class="created_updated">
+                            Created at: {{ block.createdAt|date }}
+                            &middot;
+                            Updated at: {{ block.updatedAt|date }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </form>
+{% endblock %}
+
+{% block stylesheets %}
+    {% stylesheets
+        '@AnhContentBundle/Resources/public/style.css'
+    %}<link rel="stylesheet" href="{{ asset_url }}" />{% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts
+        '@jquery_js'
+    %}<script src="{{ asset_url }}"></script>{% endjavascripts %}
+
+    <script><!--
+        $(function() {
+            var check = function() {
+                $('#fBlocks button[type="submit"]').attr('disabled', $('#fBlocks input[name="id[]"]:checked').length == 0);
+            };
+
+            $('#fBlocks input[name="id[]"]').click(check);
+
+            check();
+
+            $('#fBlocks').submit(function(event) {
+                if(!confirm('Are you sure?')) {
+                    event.preventDefault();
+                }
+            });
+        });
+    --></script>
+{% endblock %}

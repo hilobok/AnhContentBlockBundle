@@ -1,0 +1,39 @@
+parameters:
+    anh_content_block.entity.block.class: Anh\ContentBlockBundle\Entity\Block
+    anh_content_block.entity.group.class: Anh\ContentBlockBundle\Entity\Group
+    anh_content_block.form_type.block.class: Anh\ContentBlockBundle\Form\BlockType
+    anh_content_block.form_type.group.class: Anh\ContentBlockBundle\Form\GroupType
+    anh_content_block.twig.content_block_extension.class: Anh\ContentBlockBundle\Twig\ContentBlockExtension
+services:
+    anh_content_block.bundle:
+        class: Anh\ContentBlockBundle\AnhContentBlockBundle
+        factory_service: kernel
+        factory_method: getBundle
+        arguments:
+            - 'AnhContentBlockBundle'
+        tags:
+            - { name: anh_admin.bundle }
+
+    anh_content_block.form_type.block:
+        class: %anh_content_block.form_type.block.class%
+        arguments:
+            - %anh_content_block.entity.block.class%
+            - %anh_content_block.entity.group.class%
+        tags:
+            - { name: form.type, alias: anh_content_block_block }
+
+    anh_content_block.form_type.group:
+        class: %anh_content_block.form_type.group.class%
+        arguments:
+            - %anh_content_block.entity.group.class%
+        tags:
+            - { name: form.type, alias: anh_content_block_group }
+
+    anh_content_block.twig.content_block_extension:
+        class: %anh_content_block.twig.content_block_extension.class%
+        arguments:
+            - @request_stack
+            - @anh_content_block.block.repository
+            - @anh_content_block.group.repository
+        tags:
+            - { name: twig.extension }

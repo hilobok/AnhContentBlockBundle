@@ -1,0 +1,11 @@
+{% extends "AnhContentBlockBundle:Admin:layout.html.twig" %}
+
+{% use "AnhContentBlockBundle:Admin/block:editor.html.twig" %}
+
+{% block title 'Create block' %}
+
+{% block content %}
+    <h2>Create block</h2>
+
+    {{ form(form) }}
+{% endblock %}

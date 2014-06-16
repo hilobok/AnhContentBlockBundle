@@ -1,0 +1,14 @@
+{% extends "AnhContentBlockBundle:Admin:layout.html.twig" %}
+
+{% use "AnhContentBlockBundle:Admin/block:editor.html.twig" %}
+
+{% block title 'Edit block' %}
+
+{% block content %}
+    <h2>
+        <a href="{{ url('anh_content_block_admin_block_list') }}"><i class="fa fa-reply"></i></a>
+        Edit block
+    </h2>
+
+    {{ form(form) }}
+{% endblock %}
