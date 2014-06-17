@@ -9,18 +9,12 @@ class ContentBlockExtension extends \Twig_Extension
 {
     protected $blockManager;
 
-    protected $groupManager;
-
     protected $requestStack;
 
-    public function __construct(
-        RequestStack $requestStack,
-        ResourceRepositoryInterface $blockRepository,
-        ResourceRepositoryInterface $groupRepository
-    ) {
+    public function __construct(RequestStack $requestStack, ResourceRepositoryInterface $blockRepository)
+    {
         $this->requestStack = $requestStack;
         $this->blockRepository = $blockRepository;
-        $this->groupRepository = $groupRepository;
     }
 
     /**
@@ -41,11 +35,10 @@ class ContentBlockExtension extends \Twig_Extension
         return 'anh_content_block';
     }
 
-    public function contentBlock($group)
+    public function contentBlock($position)
     {
         $request = $this->requestStack->getCurrentRequest();
-        $group = $this->groupRepository->findOneBy(array('slug' => $group));
-        $block = $group ? $this->blockRepository->findBlockInGroup($group, $request->getPathInfo() === '/') : null;
+        $block = $this->blockRepository->findBlockInGroup($position, $request->getPathInfo() === '/');
 
         return $block ? $block->getContent() : '';
     }

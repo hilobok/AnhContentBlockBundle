@@ -41,12 +41,11 @@ class Block
     protected $title;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="Group", inversedBy="blocks", fetch="EAGER")
-     * @ORM\JoinColumn(name="groupId", referencedColumnName="id")
+     * @ORM\Column(name="position", type="string", length=255)
      */
-    protected $group;
+    protected $position;
 
     /**
      * @var \DateTime
@@ -116,22 +115,22 @@ class Block
     }
 
     /**
-     * Get group
+     * Get position
      * @return Group
      */
-    public function getGroup()
+    public function getPosition()
     {
-        return $this->group;
+        return $this->position;
     }
 
     /**
-     * Set group
-     * @param  Gropu $group
+     * Set position
+     * @param  string $position
      * @return Block
      */
-    public function setGroup(Group $group)
+    public function setPosition($position)
     {
-        $this->group = $group;
+        $this->position = $position;
 
         return $this;
     }

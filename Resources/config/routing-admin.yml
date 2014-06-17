@@ -24,47 +24,24 @@ anh_content_block_admin_block_update:
         id: '\d+'
 
 anh_content_block_admin_block_delete:
-    pattern: '/blocks/delete'
+    path: '/blocks/delete'
     defaults:
         _controller: anh_content_block.block.controller:deleteAction
         _anh_resource:
             redirect: anh_content_block_admin_block_list
 
 anh_content_block_admin_block_list:
-    pattern: '/blocks'
+    path: '/blocks'
     defaults:
         _controller: anh_content_block.block.controller:listAction
         _anh_resource:
             view: AnhContentBlockBundle:Admin/block:list.html.twig
 
-anh_content_block_admin_group_create:
-    path: '/groups/create'
+anh_content_block_admin_position_list:
+    path: '/positions'
     defaults:
-        _controller: anh_content_block.group.controller:createAction
+        _controller: anh_content_block.block.controller:dummyAction
         _anh_resource:
-            redirect: anh_content_block_admin_group_list
-            view: AnhContentBlockBundle:Admin/group:create.html.twig
-
-anh_content_block_admin_group_update:
-    pattern: '/groups/update-{id}'
-    defaults:
-        _controller: anh_content_block.group.controller:updateAction
-        _anh_resource:
-            redirect: referer
-            view: AnhContentBlockBundle:Admin/group:update.html.twig
-    requirements:
-        id: '\d+'
-
-anh_content_block_admin_group_delete:
-    pattern: '/groups/delete'
-    defaults:
-        _controller: anh_content_block.group.controller:deleteAction
-        _anh_resource:
-            redirect: anh_content_block_admin_group_list
-
-anh_content_block_admin_group_list:
-    path: '/groups'
-    defaults:
-        _controller: anh_content_block.group.controller:listAction
-        _anh_resource:
-            view: AnhContentBlockBundle:Admin/group:list.html.twig
+            view: AnhContentBlockBundle:Admin:/positions.html.twig
+            viewVars:
+                positions: 'container.getParameter("anh_content_block.positions")'

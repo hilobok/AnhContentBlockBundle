@@ -20,11 +20,18 @@ class AnhContentBlockExtension extends Extension implements PrependExtensionInte
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-        // $configuration = new Configuration();
-        // $config = $this->processConfiguration($configuration, $configs);
+        $config = $this->processConfiguration(new Configuration(), $configs);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+
+        if (empty($config['positions'])) {
+            throw new \InvalidArgumentException(
+                sprintf('You should define at least one position for content blocks.')
+            );
+        }
+
+        $container->setParameter('anh_content_block.positions', $config['positions']);
     }
 
     /**
@@ -53,10 +60,6 @@ class AnhContentBlockExtension extends Extension implements PrependExtensionInte
                     'model' => '%anh_content_block.entity.block.class%',
                     'driver' => 'orm'
                 ),
-                'anh_content_block.group' => array(
-                    'model' => '%anh_content_block.entity.group.class%',
-                    'driver' => 'orm'
-                )
             )
         ));
     }

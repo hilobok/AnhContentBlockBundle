@@ -4,15 +4,14 @@ namespace Anh\ContentBlockBundle\Entity;
 
 use Anh\DoctrineResource\ORM\ResourceRepository;
 use Anh\ContentBlockBundle\Entity\Block;
-use Anh\ContentBlockBundle\Entity\Group;
 
 class BlockRepository extends ResourceRepository
 {
-    public function findBlockInGroup(Group $group, $isIndex)
+    public function findBlockInGroup($position, $isIndex)
     {
         $criteria = array(
             array(
-                'group' => $group,
+                'position' => $position,
                 'isDraft' => false,
                 'visibility' => array(
                     Block::VISIBILITY_EVERYWHERE,
@@ -20,7 +19,7 @@ class BlockRepository extends ResourceRepository
                 )
             ),
             array(
-                'group' => $group,
+                'position' => $position,
                 'isDraft' => false,
                 'visibility' => array(
                     Block::VISIBILITY_EVERYWHERE,

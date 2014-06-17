@@ -11,12 +11,12 @@ class BlockType extends AbstractType
 {
     protected $blockClass;
 
-    protected $groupClass;
+    protected $positions;
 
-    public function __construct($blockClass, $groupClass)
+    public function __construct($blockClass, $positions)
     {
         $this->blockClass = $blockClass;
-        $this->groupClass = $groupClass;
+        $this->positions = $positions;
     }
 
     /**
@@ -35,9 +35,8 @@ class BlockType extends AbstractType
         ;
 
         $builder
-            ->add('group', 'entity', array(
-                'class' => $this->groupClass,
-                'property' => 'title',
+            ->add('position', 'choice', array(
+                'choices' => array_combine($this->positions, $this->positions)
             ))
         ;
 

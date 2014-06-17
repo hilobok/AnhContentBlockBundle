@@ -1,0 +1,13 @@
+{% extends "AnhContentBlockBundle:Admin:layout.html.twig" %}
+
+{% block title 'Content positions' %}
+
+{% block content %}
+    <h2>{{ positions|length }} positions</h2>
+
+    {% for position in positions %}
+        <ul>
+            <li>{{ position }}</li>
+        </ul>
+    {% endfor %}
+{% endblock %}
