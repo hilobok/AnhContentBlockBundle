@@ -12,6 +12,7 @@
 
     "require": {
         "anh/doctrine-resource-bundle": "0.1.*",
+        "anh/admin-bundle": "~1.0",
         "sp/bower-bundle": "~0.9"
     },
 
