@@ -7,7 +7,7 @@ use Anh\ContentBlockBundle\Entity\Block;
 
 class BlockRepository extends ResourceRepository
 {
-    public function findBlockInGroup($position, $isIndex)
+    public function findBlockForPosition($position, $isIndex)
     {
         $criteria = array(
             array(

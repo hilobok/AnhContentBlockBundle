@@ -38,7 +38,11 @@ class ContentBlockExtension extends \Twig_Extension
     public function contentBlock($position)
     {
         $request = $this->requestStack->getCurrentRequest();
-        $block = $this->blockRepository->findBlockInGroup($position, $request->getPathInfo() === '/');
+
+        $block = $this->blockRepository->findBlockForPosition(
+            $position,
+            $request->getPathInfo() === '/'
+        );
 
         return $block ? $block->getContent() : '';
     }
