@@ -6,7 +6,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class AnhContentBlockBundle extends Bundle
 {
-    const VERSION = 'v0.1.5';
+    const VERSION = 'v0.1.6';
     const TITLE = 'AnhContentBlockBundle';
     const DESCRIPTION = 'Bundle for content blocks management';
 
