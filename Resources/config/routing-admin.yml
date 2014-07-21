@@ -43,5 +43,5 @@ anh_content_block_admin_position_list:
         _controller: anh_content_block.block.controller:dummyAction
         _anh_resource:
             view: AnhContentBlockBundle:Admin:/positions.html.twig
-            viewVars:
+            data:
                 positions: 'container.getParameter("anh_content_block.positions")'
